@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_sales
+    description: Clean, typed, de-duplicated sales records from raw.sales
+    columns:
+      - name: sale_id
+        tests: 
+          - not_null
+          - unique
+      - name: sale_date
+        tests:
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+      - name: currency
+        tests:
+          - accepted_values:
+              values: ["USD", "EUR", "GBP"]
