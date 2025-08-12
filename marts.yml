@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: int_daily_sales
+    description: Day/store/product aggregates
+    columns:
+      - name: sale_date
+        tests: [not_null]
+  - name: fct_daily_sales_metrics
+    description: Final daily sales metrics for reporting
+    columns:
+      - name: sale_date
+        tests:
+          - not_null
+          - unique
+      - name: revenue
+        tests:
+          - not_null
