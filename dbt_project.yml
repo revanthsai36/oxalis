@@ -1,0 +1,18 @@
+name: "oxo_dbt"
+version: "1.0.0"
+config-version: 2
+
+profile: "oxo_profile"
+
+models:
+  oxo_dbt:
+    +materialized: view
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: incremental
+      +on_schema_change: append_new_columns
+      +incremental_strategy: delete+insert
+      +unique_key: sale_date
